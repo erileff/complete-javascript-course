@@ -39,6 +39,20 @@ const game = {
   },
 };
 
+const gameEvents = new Map([
+  [17, 'GOAL'],
+  [36, 'Substitution'],
+  [47, 'GOAL'],
+  [61, 'Substitution'],
+  [64, 'Yellow Card'],
+  [69, 'Red Card'],
+  [70, 'Substitution'],
+  [72, 'Substitution'],
+  [76, 'GOAL'],
+  [80, 'GOAL'],
+  [92, 'Yellow Card'],
+]);
+
 // Coding Challenge 1
 /*
 const players1 = [...game.players[0]];
@@ -61,6 +75,7 @@ printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 is more likely to win');
 */
 
+/*
 // Coding Challenge 2
 for (const [i, player] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${player}`);
@@ -83,3 +98,37 @@ for (let scorer of game.scored) {
   scorers[scorer] ? scorers[scorer]++ : (scorers[scorer] = 1);
 }
 console.log(scorers);
+*/
+
+// Coding Challenge 3
+/*gameEvents.delete(64);
+const events = [...new Set(gameEvents.values())];
+const avg = 90 / gameEvents.size;
+
+console.log(events);
+console.log(`An event happened, on average, every ${avg} minutes`);
+
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF ${min}: ${event}]`);
+}
+*/
+
+// Coding Challenge 4
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});

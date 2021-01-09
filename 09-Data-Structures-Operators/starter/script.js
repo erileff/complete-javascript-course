@@ -1,5 +1,97 @@
 'use strict';
 
+/* const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(airline.slice(4)); // 'Air Portugal'
+console.log(airline.slice(4, 7)); // 'Air' (space not included)
+
+console.log(airline.slice(0, airline.indexOf(' '))); // 'TAP'
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // 'Portugal'
+
+console.log(airline.slice(-2)); // 'al'
+console.log(airline.slice(1, -1)); // 'AP Air Portuga'
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') {
+    console.log('You got the middle seat');
+  } else {
+    console.log('You got lucky');
+  }
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+const correctCase = function (name) {
+  const nameLower = name.toLowerCase();
+  const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+  console.log(nameCorrect);
+};
+
+const email = 'hello@erica.io';
+const loginEmail = ' Hello@Erica.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace(/door/g, 'gate'));
+
+const plane2 = 'Airbus A320neo';
+if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+}
+
+console.log('a+very+nice+string'.split('+'));
+
+const [firstName, lastName] = 'Erica Leff'.split(' ');
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('erica leff');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(3848737597439577));
+
+const message2 = 'Bad Weather... All Depatures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(3);
+planesInLine(10);
+*/
+/* 
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -39,6 +131,68 @@ const restaurant = {
   },
 };
 
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again'],
+]);
+console.log(question);
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+
+console.log([...question]);
+
+// Maps
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Italy');
+rest.set(2, 'Portugal');
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed :(');
+
+console.log(rest);
+console.log(rest.get('name'));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // returns 'We are open :D' because it is true
+
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pizza', 'Pizza']);
+console.log(ordersSet); // Pasta, Pizza, Risotto
+console.log(ordersSet.size); // 3
+console.log(ordersSet.has('Pizza')); // true
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+
+console.log(new Set('Erica')); // E, r, i, c, a
+
+const staff = ['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+const nameLetters = new Set('ericaleff').size;
+console.log(`There are ${nameLetters} letters in my name`);
+
+
 const properties = Object.keys(restaurant.openingHours);
 console.log(properties);
 
@@ -60,7 +214,6 @@ for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 
-/* 
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 for (const day of days) {
